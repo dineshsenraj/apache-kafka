@@ -106,3 +106,36 @@ sudo systemctl start zookeeper
 sudo systemctl start kafka
 sudo systemctl status kafka
 ```
+
+## Topics
+
+### Create Topic
+
+```bash
+cd /usr/local/kafka
+bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic testTopic
+```
+
+### List Topic
+
+```bash
+bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+```
+
+### Send Message to Topic
+
+```bash
+bin/kafka-console-producer.sh --broker-list localhost:9092 --topic testTopic
+```
+This is a Produces client, type any Message that has to be sent to consumers.
+
+### Read Message from Topic
+
+```bash
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic testTopic --from-beginning
+```
+This is a Consumer client, Producer messages will be reflected in the consumer queue.
+
+## Reference
+
+Kafka Setup[https://tecadmin.net/install-apache-kafka-ubuntu/]
