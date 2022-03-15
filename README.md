@@ -127,7 +127,7 @@ bin/kafka-topics.sh --list --bootstrap-server localhost:9092
 ```bash
 bin/kafka-console-producer.sh --broker-list localhost:9092 --topic testTopic
 ```
-This is a Produces client, type any Message that has to be sent to consumers.
+This is a Producer client, type any Message that has to be sent to consumers.
 
 ### Read Message from Topic
 
@@ -138,4 +138,4 @@ This is a Consumer client, Producer messages will be reflected in the consumer q
 
 ## Reference
 
-Kafka Setup[https://tecadmin.net/install-apache-kafka-ubuntu/]
+[Kafka Setup](https://tecadmin.net/install-apache-kafka-ubuntu/)
