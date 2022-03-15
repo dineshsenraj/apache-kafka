@@ -44,6 +44,8 @@ mv kafka_2.13-3.0.0 /usr/local/kafka
 
 ### Setup Systemd file for Kafka
 
+Create Zookeeper service
+
 ```bash
 cd /etc/systemd/system
 touch zookeeper.service
@@ -67,4 +69,42 @@ Restart=on-abnormal
 
 [Install]
 WantedBy=multi-user.target
+```
+
+Create Kafka Service
+
+```bash
+cd /etc/systemd/system
+touch kafka.service
+vi kafka.service
+```
+Add the below lines, Make sure you give the correct **JAVA_HOME** Path, i.e Java Installed Path.
+
+```
+[Unit]
+[Unit]
+Description=Apache Kafka Server
+Documentation=http://kafka.apache.org/documentation.html
+Requires=zookeeper.service
+
+[Service]
+Type=simple
+Environment="JAVA_HOME=/opt/jdk-16/jdk-16.0.1"
+ExecStart=/usr/local/kafka/bin/kafka-server-start.sh /usr/local/kafka/config/server.properties
+ExecStop=/usr/local/kafka/bin/kafka-server-stop.sh
+
+[Install]
+WantedBy=multi-user.target
+```
+Reload Deamon after creating the files
+
+```bash
+systemctl daemon-reload
+```
+### Start Zookeeper and Kafka Server
+
+```bash
+sudo systemctl start zookeeper
+sudo systemctl start kafka
+sudo systemctl status kafka
 ```
