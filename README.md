@@ -25,7 +25,7 @@ Try the command to download kafka from apache website, always download **Binary*
 ```bash
 mkdir kafka
 cd kafka
-wget https://www.apache.org/dyn/closer.cgi?path=/kafka/3.1.0/kafka_2.13-3.1.0.tgz
+wget https://archive.apache.org/dist/kafka/3.0.0/kafka_2.13-3.0.0.tgz
 ```
 If the command gives certificate error add ```--no-check-certificate``` to the command.
 
